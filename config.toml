@@ -1,0 +1,35 @@
+base_url = "https://rneto.net"
+title = "Rui Neto"
+build_search_index = true
+generate_feed = true
+compile_sass = true
+minify_html = true
+output_dir = "docs"
+
+[markdown]
+highlight_code = true
+highlight_theme = "inspired-github"
+
+[extra]
+toc = true
+use_cdn = false
+#favicon = "/icon/favicon.png"
+#theme = "apollo"
+
+menu = [
+    { name = "/posts", url = "/posts", weight = 1, target="_self" },
+    { name = "/github", url = "https://github.com/rnetonet/", weight = 2, target="blank" },
+    { name = "/twitter", url = "https://twitter.com/rnetonet/", weight = 3, target="blank" },
+]
+
+socials = [
+    { name = "twitter", url = "https://twitter.com/rnetonet", icon = "twitter" },
+    { name = "github", url = "https=//github.com/rnetonet/", icon = "github" },
+]
+
+custom_css = []
+
+[extra.analytics]
+enabled = false
+#goatcounter_user = "your_user"
+#goatcounter_host = "example.com"    # default= goatcounter.com
