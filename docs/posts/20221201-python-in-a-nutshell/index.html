@@ -1,0 +1,300 @@
+<!doctype html><html><head><meta charset=UTF-8><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="width=device-width,initial-scale=1.0" name=viewport><title> Notas sobre o livro Python Distilled </title><link href=https://rneto.net/fonts.css rel=stylesheet><link title="Rui Neto" href=https://rneto.net/atom.xml rel=alternate type=application/atom+xml><link href=https://rneto.net/theme/light.css rel=stylesheet><link href=https://rneto.net/main.css media=screen rel=stylesheet><body><div class=content><header><div class=main><a href=https://rneto.net>Rui Neto</a></div><nav><a style="margin-left: 0.7em" href=/posts>/posts</a><a style="margin-left: 0.7em" href=https://github.com/rnetonet/ target=blank>/github</a><a style="margin-left: 0.7em" href=https://twitter.com/rnetonet/ target=blank>/twitter</a></nav></header><main><article><div class=title><div class=page-header>Notas sobre o livro Python Distilled<span style="font-size: 1.6em" class=primary-color>.</span></div><div class=meta>01/12/2022</div></div><h1>Índice</h1><ul><li><a href=https://rneto.net/posts/20221201-python-in-a-nutshell/#conceitos-basicos>Conceitos Básicos</a> <ul><li><a href=https://rneto.net/posts/20221201-python-in-a-nutshell/#executando>Executando</a><li><a href=https://rneto.net/posts/20221201-python-in-a-nutshell/#programas-python>Programas Python</a><li><a href=https://rneto.net/posts/20221201-python-in-a-nutshell/#primitivos-variaveis-e-expressoes>Primitivos, variáveis e expressões</a><li><a href=https://rneto.net/posts/20221201-python-in-a-nutshell/#operadores-aritmeticos>Operadores aritméticos</a><li><a href=https://rneto.net/posts/20221201-python-in-a-nutshell/#condicionais-e-fluxo-de-controle>Condicionais e fluxo de controle</a><li><a href=https://rneto.net/posts/20221201-python-in-a-nutshell/#strings>Strings</a></ul></ul><section class=body><h1 id=conceitos-basicos>Conceitos Básicos</h1><h2 id=executando>Executando</h2><p>Python é uma linguagem interpretada.<p>O download do interpretador pode ser feito em <a href=https://www.python.org>www.python.org</a>.<p>Ao executar o interpretador sem parâmetros, é apresentado um shell que permite a execução instantânea de código:<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span>$  python
+</span><span>Python </span><span style=color:#0086b3;>3.8.10 </span><span>(default, Jun </span><span style=color:#0086b3;>22 2022</span><span>, </span><span style=color:#0086b3;>20</span><span>:</span><span style=color:#0086b3;>18</span><span>:</span><span style=color:#0086b3;>18</span><span>) 
+</span><span>[</span><span style=color:#0086b3;>GCC 9.4.0</span><span>] on linux
+</span><span>Type </span><span style=color:#183691;>"help"</span><span>, </span><span style=color:#183691;>"copyright"</span><span>, </span><span style=color:#183691;>"credits" </span><span style=font-weight:bold;color:#a71d5d;>or </span><span style=color:#183691;>"license" </span><span style=font-weight:bold;color:#a71d5d;>for </span><span>more information.
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#183691;>"Hello World"</span><span>)
+</span><span>Hello World
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span></code></pre><p>Servindo, inclusive, como calculadora:<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>2 </span><span style=font-weight:bold;color:#a71d5d;>+ </span><span style=color:#0086b3;>2
+</span><span style=color:#0086b3;>4
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span></code></pre><p><strong>Apenas</strong> neste modo interativo, o <strong>_</strong> (<em>underscore</em>) armazena automaticamente o último valor computado:<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>2 </span><span style=font-weight:bold;color:#a71d5d;>+ </span><span style=color:#0086b3;>2
+</span><span style=color:#0086b3;>4
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>_
+</span><span style=color:#0086b3;>4
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>_ </span><span style=font-weight:bold;color:#a71d5d;>* </span><span style=color:#0086b3;>3
+</span><span style=color:#0086b3;>12
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>_
+</span><span style=color:#0086b3;>12
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span></code></pre><p>Para sair, digite <code>quit()</code> ou use os atalhos <code>CTRL + D</code> (Linux e MacOS) / <code>CTRL + Z</code> (Windows).<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>quit()
+</span></code></pre><h2 id=programas-python>Programas Python</h2><p>Programas em Python devem ser escritos em arquvos textos simples com codificação <strong>UTF-8</strong> e com extensão <strong>.py</strong> (recomendação).<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-style:italic;color:#969896;># exemplo.py
+</span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#183691;>"Hello World"</span><span>) </span><span style=font-style:italic;color:#969896;># Comentário
+</span></code></pre><p>No exemplo, <code>#</code> denota um comentário (texto informativo ignorado pelo interpretador) que se estende até o final da linha.<p>Alguns editores recomendados:<ul><li><a href=https://code.visualstudio.com/>VS Code</a><li><a href=https://www.jetbrains.com/pycharm/>PyCharm</a></ul><h2 id=primitivos-variaveis-e-expressoes>Primitivos, variáveis e expressões</h2><p>Python apresenta uma coleção de tipos primitivos: <code>bool</code> (<em>booleanos</em>), <code>int</code> (<em>inteiros</em>), <code>float</code> (<em>ponto flutuante</em>) e <code>str</code> (<em>string</em> |fc <em>texto</em>).<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>True </span><span style=font-style:italic;color:#969896;># bool
+</span><span style=color:#0086b3;>True
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>False </span><span style=font-style:italic;color:#969896;># bool
+</span><span style=color:#0086b3;>False
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>10 </span><span style=font-style:italic;color:#969896;># int
+</span><span style=color:#0086b3;>10
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>2.5 </span><span style=font-style:italic;color:#969896;># float
+</span><span style=color:#0086b3;>2.5
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#183691;>"Olá Mundo" </span><span style=font-style:italic;color:#969896;># str
+</span><span style=color:#183691;>'Olá Mundo'
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span></code></pre><p>Variáveis são nomes dados a objetos. Valores primitivos são objetos também:<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>x </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>10
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#62a35c;>print</span><span>(x) </span><span style=font-style:italic;color:#969896;># imprime na tela
+</span><span style=color:#0086b3;>10
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#62a35c;>type</span><span>(x) </span><span style=font-style:italic;color:#969896;># retorna o tipo 
+</span><span style=color:#0086b3;>int
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span></code></pre><p>Pode-se adicionar tipos à declaração de variáveis, mas estes tipos são apenas informativos e usados por ferramentas externas de verificação de código (<a href=http://mypy-lang.org/>MyPy</a>, <a href=https://google.github.io/pytype/>pytype</a>, <a href=https://pyre-check.org/>Pyre</a>):<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>x : </span><span style=color:#0086b3;>int </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>10
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#62a35c;>print</span><span>(x)
+</span><span style=color:#0086b3;>10
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#62a35c;>type</span><span>(x)
+</span><span style=color:#0086b3;>int
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span></code></pre><p>O interpretador ignora tipos informados:<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>x : </span><span style=color:#0086b3;>str </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>10
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#62a35c;>print</span><span>(x)
+</span><span style=color:#0086b3;>10
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#62a35c;>type</span><span>(x)
+</span><span style=color:#0086b3;>int
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span></code></pre><p><strong>Expressões</strong> são combinações de primitivos, variáveis e <strong>operadores</strong> que produzem novos valores:<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>x </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>10
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>x </span><span style=font-weight:bold;color:#a71d5d;>* </span><span style=color:#0086b3;>2 </span><span style=font-weight:bold;color:#a71d5d;>- </span><span style=color:#0086b3;>1
+</span><span style=color:#0086b3;>19
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span></code></pre><p>Os resultados das expressões podem ser armazenados em variáveis:<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>x </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>10
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>y </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>10 </span><span style=font-weight:bold;color:#a71d5d;>- </span><span style=color:#0086b3;>5
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>y
+</span><span style=color:#0086b3;>5
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#62a35c;>type</span><span>(y)
+</span><span style=color:#0086b3;>int
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span></code></pre><p>Exemplo de cálculo de juros composto usando primitivos, variáveis e expressões:<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>montante </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>100
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>taxa </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>0.09 </span><span style=font-style:italic;color:#969896;># 9%
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>num_anos </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>5
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>ano_atual </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>1
+</span><span style=font-weight:bold;color:#a71d5d;>>>> while </span><span>ano_atual </span><span style=font-weight:bold;color:#a71d5d;><= </span><span>num_anos:
+</span><span style=color:#0086b3;>...     </span><span>montante </span><span style=font-weight:bold;color:#a71d5d;>= </span><span>montante </span><span style=font-weight:bold;color:#a71d5d;>* </span><span>(</span><span style=color:#0086b3;>1 </span><span style=font-weight:bold;color:#a71d5d;>+ </span><span>taxa)
+</span><span style=color:#0086b3;>...     </span><span style=color:#62a35c;>print</span><span>(ano_atual, montante)
+</span><span style=color:#0086b3;>...     </span><span>ano_atual </span><span style=font-weight:bold;color:#a71d5d;>+= </span><span style=color:#0086b3;>1
+</span><span style=color:#0086b3;>... 
+</span><span style=color:#0086b3;>1 109.00000000000001
+</span><span style=color:#0086b3;>2 118.81000000000003
+</span><span style=color:#0086b3;>3 129.50290000000004
+</span><span style=color:#0086b3;>4 141.15816100000006
+</span><span style=color:#0086b3;>5 153.86239549000007
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span></code></pre><p>O <code>while</code> testa e executa o <strong>bloco de execução</strong> enquanto a condição for verdadeira. Testa, executa. Testa novamente, executa novamente, enquanto a condição for verdadeira.<p>O <strong>bloco de execução</strong> está disposto imediatamente após a declaração e é indentado com espaços. Recomenda-se a utilização de <strong>4 espaços</strong> para indentação.<p>Podemos aprimorar a apresentação do resultado no exemplo acima usando <em>f-strings</em>:<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>montante </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>100
+</span><span style=color:#0086b3;>... </span><span>taxa </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>0.09 </span><span style=font-style:italic;color:#969896;># 9%
+</span><span style=color:#0086b3;>... </span><span>ano_final </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>30
+</span><span style=color:#0086b3;>... </span><span>ano_atual </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>22
+</span><span style=color:#0086b3;>... </span><span style=font-weight:bold;color:#a71d5d;>while </span><span>ano_atual </span><span style=font-weight:bold;color:#a71d5d;><= </span><span>ano_final:
+</span><span style=color:#0086b3;>...     </span><span>montante </span><span style=font-weight:bold;color:#a71d5d;>= </span><span>montante </span><span style=font-weight:bold;color:#a71d5d;>* </span><span>(</span><span style=color:#0086b3;>1 </span><span style=font-weight:bold;color:#a71d5d;>+ </span><span>taxa)
+</span><span style=color:#0086b3;>...     </span><span style=font-style:italic;color:#969896;># >4d - decimal com quatro dígitos alinhado à direita
+</span><span style=color:#0086b3;>...     </span><span style=font-style:italic;color:#969896;># 0.2f - ponto flutuante com precisão de dois dígitos
+</span><span style=color:#0086b3;>...     </span><span style=color:#62a35c;>print</span><span>(</span><span style=font-weight:bold;color:#a71d5d;>f</span><span style=color:#183691;>"</span><span>{ano_atual</span><span style=color:#0086b3;>:>4d</span><span>}</span><span style=color:#183691;>, </span><span>{montante</span><span style=color:#0086b3;>:0.2f</span><span>}</span><span style=color:#183691;>"</span><span>)
+</span><span style=color:#0086b3;>...     </span><span>ano_atual </span><span style=font-weight:bold;color:#a71d5d;>+= </span><span style=color:#0086b3;>1
+</span><span style=color:#0086b3;>... 
+</span><span>  </span><span style=color:#0086b3;>22</span><span>, </span><span style=color:#0086b3;>109.00
+</span><span>  </span><span style=color:#0086b3;>23</span><span>, </span><span style=color:#0086b3;>118.81
+</span><span>  </span><span style=color:#0086b3;>24</span><span>, </span><span style=color:#0086b3;>129.50
+</span><span>  </span><span style=color:#0086b3;>25</span><span>, </span><span style=color:#0086b3;>141.16
+</span><span>  </span><span style=color:#0086b3;>26</span><span>, </span><span style=color:#0086b3;>153.86
+</span><span>  </span><span style=color:#0086b3;>27</span><span>, </span><span style=color:#0086b3;>167.71
+</span><span>  </span><span style=color:#0086b3;>28</span><span>, </span><span style=color:#0086b3;>182.80
+</span><span>  </span><span style=color:#0086b3;>29</span><span>, </span><span style=color:#0086b3;>199.26
+</span><span>  </span><span style=color:#0086b3;>30</span><span>, </span><span style=color:#0086b3;>217.19
+</span></code></pre><h2 id=operadores-aritmeticos>Operadores aritméticos</h2><p>Python possui uma série de operadores aritméticos. Vejamos:<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>10 </span><span style=font-weight:bold;color:#a71d5d;>+ </span><span style=color:#0086b3;>2
+</span><span style=color:#0086b3;>12
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>10 </span><span style=font-weight:bold;color:#a71d5d;>- </span><span style=color:#0086b3;>2
+</span><span style=color:#0086b3;>8
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>10 </span><span style=font-weight:bold;color:#a71d5d;>* </span><span style=color:#0086b3;>2
+</span><span style=color:#0086b3;>20
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>10 </span><span style=font-weight:bold;color:#a71d5d;>/ </span><span style=color:#0086b3;>2 </span><span style=font-style:italic;color:#969896;># retorna ponto flutuante
+</span><span style=color:#0086b3;>5.0
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>10 </span><span style=font-weight:bold;color:#a71d5d;>// </span><span style=color:#0086b3;>2 </span><span style=font-style:italic;color:#969896;># trunca, retorna inteiro
+</span><span style=color:#0086b3;>5
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>10 </span><span style=font-weight:bold;color:#a71d5d;>** </span><span style=color:#0086b3;>2 </span><span style=font-style:italic;color:#969896;># exponenciação
+</span><span style=color:#0086b3;>100
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>10 </span><span style=font-weight:bold;color:#a71d5d;>% </span><span style=color:#0086b3;>3 </span><span style=font-style:italic;color:#969896;># "resto da divisão"
+</span><span style=color:#0086b3;>1
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span></code></pre><p>Algumas funções matemáticas básicas também estão disponíveis:<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#62a35c;>abs</span><span>( </span><span style=font-weight:bold;color:#a71d5d;>-</span><span style=color:#0086b3;>10 </span><span>)
+</span><span style=color:#0086b3;>10
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#62a35c;>divmod</span><span>( </span><span style=color:#0086b3;>10</span><span>, </span><span style=color:#0086b3;>3 </span><span>) </span><span style=font-style:italic;color:#969896;># 10 // 3, 10 % 3
+</span><span>(</span><span style=color:#0086b3;>3</span><span>, </span><span style=color:#0086b3;>1</span><span>)
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#62a35c;>pow</span><span>(</span><span style=color:#0086b3;>10</span><span>, </span><span style=color:#0086b3;>2</span><span>) </span><span style=font-style:italic;color:#969896;># 10 ** 2
+</span><span style=color:#0086b3;>100
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#62a35c;>pow</span><span>(</span><span style=color:#0086b3;>10</span><span>, </span><span style=color:#0086b3;>2</span><span>, </span><span style=color:#0086b3;>3</span><span>) </span><span style=font-style:italic;color:#969896;># 10 ** 2
+</span><span style=color:#0086b3;>1
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#62a35c;>round</span><span>(</span><span style=color:#0086b3;>3.14</span><span>, </span><span style=color:#0086b3;>1</span><span>) </span><span style=font-style:italic;color:#969896;># arredonda 3.14 para 1 casa de cimal
+</span><span style=color:#0086b3;>3.1
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#62a35c;>round</span><span>(</span><span style=color:#0086b3;>3.149</span><span>, </span><span style=color:#0086b3;>2</span><span>) </span><span style=font-style:italic;color:#969896;># arredonda 3.14 para 2 casas decimais
+</span><span style=color:#0086b3;>3.15
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span></code></pre><blockquote><p>Obs: <code>round()</code> sempre arredonda valores de meio (<code>0.5, 1.5</code>) para o valor <strong>par</strong> mais próximo: <code>0.5</code>, vira <code>0.0</code>, <code>1.5</code> vira <code>2.0</code>.</blockquote><p>Inteiros também permitem operações para manipulação de bits:<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=font-style:italic;color:#969896;># & - bitwise AND
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>x </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>9   </span><span style=font-style:italic;color:#969896;># 0b1001
+</span><span style=color:#0086b3;>... </span><span>y </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>10  </span><span style=font-style:italic;color:#969896;># 0b1010
+</span><span style=color:#0086b3;>... 
+</span><span style=color:#0086b3;>... </span><span style=color:#62a35c;>print</span><span>(x </span><span style=font-weight:bold;color:#a71d5d;>& </span><span>y)
+</span><span style=color:#0086b3;>... </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#62a35c;>bin</span><span>(x </span><span style=font-weight:bold;color:#a71d5d;>& </span><span>y))
+</span><span style=color:#0086b3;>8
+</span><span style=color:#0086b3;>0b1000
+</span><span>
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=font-style:italic;color:#969896;># | - bitwise OR
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>x </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>9   </span><span style=font-style:italic;color:#969896;># 0b1001
+</span><span style=color:#0086b3;>... </span><span>y </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>10  </span><span style=font-style:italic;color:#969896;># 0b1010
+</span><span style=color:#0086b3;>... 
+</span><span style=color:#0086b3;>... </span><span style=color:#62a35c;>print</span><span>(x </span><span style=font-weight:bold;color:#a71d5d;>| </span><span>y)
+</span><span style=color:#0086b3;>... </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#62a35c;>bin</span><span>(x </span><span style=font-weight:bold;color:#a71d5d;>| </span><span>y))
+</span><span style=color:#0086b3;>11
+</span><span style=color:#0086b3;>0b1011
+</span><span>
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=font-style:italic;color:#969896;># ^ - Bitwise XOR
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>x </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>9   </span><span style=font-style:italic;color:#969896;># 0b1001
+</span><span style=color:#0086b3;>... </span><span>y </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>10  </span><span style=font-style:italic;color:#969896;># 0b1010
+</span><span style=color:#0086b3;>... 
+</span><span style=color:#0086b3;>... </span><span style=color:#62a35c;>print</span><span>(x </span><span style=font-weight:bold;color:#a71d5d;>^ </span><span>y)
+</span><span style=color:#0086b3;>... </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#62a35c;>bin</span><span>(x </span><span style=font-weight:bold;color:#a71d5d;>^ </span><span>y))
+</span><span style=color:#0086b3;>3
+</span><span style=color:#0086b3;>0b11
+</span><span>
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=font-style:italic;color:#969896;># ~ - bitwise NOT
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>x </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>9  </span><span style=font-style:italic;color:#969896;># 0b1001
+</span><span style=color:#0086b3;>... </span><span style=color:#62a35c;>print</span><span>(</span><span style=font-weight:bold;color:#a71d5d;>~</span><span>x)
+</span><span style=color:#0086b3;>... </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#62a35c;>bin</span><span>(</span><span style=font-weight:bold;color:#a71d5d;>~</span><span>x))
+</span><span style=font-weight:bold;color:#a71d5d;>-</span><span style=color:#0086b3;>10
+</span><span style=font-weight:bold;color:#a71d5d;>-</span><span style=color:#0086b3;>0b1010
+</span><span>
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=font-style:italic;color:#969896;># <<, >> - bitwise shifts
+</span><span>
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>x </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>9  </span><span style=font-style:italic;color:#969896;># 0b1001
+</span><span style=color:#0086b3;>... </span><span style=color:#62a35c;>print</span><span>(x </span><span style=font-weight:bold;color:#a71d5d;><< </span><span style=color:#0086b3;>1</span><span>)
+</span><span style=color:#0086b3;>... </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#62a35c;>bin</span><span>(x </span><span style=font-weight:bold;color:#a71d5d;><< </span><span style=color:#0086b3;>1</span><span>))
+</span><span style=color:#0086b3;>18
+</span><span style=color:#0086b3;>0b10010
+</span><span>
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>x </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>9  </span><span style=font-style:italic;color:#969896;># 0b1001
+</span><span style=color:#0086b3;>... </span><span style=color:#62a35c;>print</span><span>(x </span><span style=font-weight:bold;color:#a71d5d;>>> </span><span style=color:#0086b3;>1</span><span>)
+</span><span style=color:#0086b3;>... </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#62a35c;>bin</span><span>(x </span><span style=font-weight:bold;color:#a71d5d;>>> </span><span style=color:#0086b3;>1</span><span>))
+</span><span style=color:#0086b3;>4
+</span><span style=color:#0086b3;>0b100
+</span></code></pre><p>Os seguintes operadores permitem comparar valores:<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>10 </span><span style=font-weight:bold;color:#a71d5d;>== </span><span style=color:#0086b3;>10
+</span><span style=color:#0086b3;>True
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>10 </span><span style=font-weight:bold;color:#a71d5d;>!= </span><span style=color:#0086b3;>11
+</span><span style=color:#0086b3;>True
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>10 </span><span style=font-weight:bold;color:#a71d5d;>< </span><span style=color:#0086b3;>11
+</span><span style=color:#0086b3;>True
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>10 </span><span style=font-weight:bold;color:#a71d5d;>> </span><span style=color:#0086b3;>11
+</span><span style=color:#0086b3;>False
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>10 </span><span style=font-weight:bold;color:#a71d5d;><= </span><span style=color:#0086b3;>11
+</span><span style=color:#0086b3;>True
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>10 </span><span style=font-weight:bold;color:#a71d5d;>>= </span><span style=color:#0086b3;>11
+</span><span style=color:#0086b3;>False
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span></code></pre><p>O resultado das comparações é um booleano, <code>True</code> ou <code>False</code>.<p>Comparações compostas podem ser feitas conjugando os operadores <code>and</code> (<strong>e</strong> lógico), <code>or</code> (<strong>ou</strong> lógico) e <code>not</code> (negação lógica):<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>10 </span><span style=font-weight:bold;color:#a71d5d;>< </span><span style=color:#0086b3;>11 </span><span style=font-weight:bold;color:#a71d5d;>and </span><span style=color:#0086b3;>9 </span><span style=font-weight:bold;color:#a71d5d;>< </span><span style=color:#0086b3;>10
+</span><span style=color:#0086b3;>True
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>10 </span><span style=font-weight:bold;color:#a71d5d;>< </span><span style=color:#0086b3;>11 </span><span style=font-weight:bold;color:#a71d5d;>and </span><span style=color:#0086b3;>9 </span><span style=font-weight:bold;color:#a71d5d;>< </span><span style=color:#0086b3;>8 </span><span style=font-style:italic;color:#969896;># segunda condição é falsa
+</span><span style=color:#0086b3;>False
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>10 </span><span style=font-weight:bold;color:#a71d5d;>< </span><span style=color:#0086b3;>11 </span><span style=font-weight:bold;color:#a71d5d;>or </span><span style=color:#0086b3;>9 </span><span style=font-weight:bold;color:#a71d5d;>< </span><span style=color:#0086b3;>10
+</span><span style=color:#0086b3;>True
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#0086b3;>10 </span><span style=font-weight:bold;color:#a71d5d;>< </span><span style=color:#0086b3;>11 </span><span style=font-weight:bold;color:#a71d5d;>or </span><span style=color:#0086b3;>9 </span><span style=font-weight:bold;color:#a71d5d;>< </span><span style=color:#0086b3;>8
+</span><span style=color:#0086b3;>True
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span><span style=font-weight:bold;color:#a71d5d;>>>> not </span><span style=color:#0086b3;>10 </span><span style=font-weight:bold;color:#a71d5d;>< </span><span style=color:#0086b3;>11
+</span><span style=color:#0086b3;>False
+</span><span style=font-weight:bold;color:#a71d5d;>>>> not </span><span style=color:#0086b3;>True
+</span><span style=color:#0086b3;>False
+</span><span style=font-weight:bold;color:#a71d5d;>>>> not </span><span style=color:#0086b3;>False
+</span><span style=color:#0086b3;>True
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span></code></pre><p>Python considera como <code>False</code>:<table><thead><tr><th>Tipo<th>Valor<tbody><tr><td>Booleano<td><code>False</code><tr><td>Nulo<td><code>None</code><tr><td>Inteiro<td><code>0</code><tr><td>Ponto Flutuante<td><code>0.0</code><tr><td>String Vazia<td><code>""</code><tr><td>List Vazia<td><code>[]</code><tr><td>Dicionário Vazio<td><code>{}</code></table><h2 id=condicionais-e-fluxo-de-controle>Condicionais e fluxo de controle</h2><p>A execução do programa pode ser condicionada usando declarações <code>if</code>, <code>elif</code> e <code>else</code>:<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span>extensao </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#62a35c;>input</span><span>(</span><span style=color:#183691;>"Digite a extensão com três dígitos (ex: jpg, gif): "</span><span>)
+</span><span>
+</span><span style=font-weight:bold;color:#a71d5d;>if </span><span>extensao </span><span style=font-weight:bold;color:#a71d5d;>== </span><span style=color:#183691;>"jpg"</span><span>: 
+</span><span>    </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#183691;>"imagem"</span><span>)
+</span><span style=font-weight:bold;color:#a71d5d;>elif </span><span>extensao </span><span style=font-weight:bold;color:#a71d5d;>== </span><span style=color:#183691;>"gif"</span><span>:
+</span><span>    </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#183691;>"imagem"</span><span>)
+</span><span style=font-weight:bold;color:#a71d5d;>elif </span><span>extensao </span><span style=font-weight:bold;color:#a71d5d;>== </span><span style=color:#183691;>"png"</span><span>:
+</span><span>    </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#183691;>"imagem"</span><span>)
+</span><span style=font-weight:bold;color:#a71d5d;>else</span><span>:
+</span><span>    </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#183691;>"Outo formato"</span><span>)
+</span></code></pre><p>Exemplos dos possíveis fluxos de execução:<ul><li><code>if</code></ul><pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>extensao </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#62a35c;>input</span><span>(</span><span style=color:#183691;>"Digite a extensão com três dígitos (ex: jpg, gif): "</span><span>)
+</span><span style=color:#0086b3;>... 
+</span><span style=color:#0086b3;>... </span><span style=font-weight:bold;color:#a71d5d;>if </span><span>extensao </span><span style=font-weight:bold;color:#a71d5d;>== </span><span style=color:#183691;>"jpg"</span><span>:
+</span><span style=color:#0086b3;>...     </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#183691;>"imagem"</span><span>)
+</span><span style=color:#0086b3;>... </span><span style=font-weight:bold;color:#a71d5d;>elif </span><span>extensao </span><span style=font-weight:bold;color:#a71d5d;>== </span><span style=color:#183691;>"gif"</span><span>:
+</span><span style=color:#0086b3;>...     </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#183691;>"imagem"</span><span>)
+</span><span style=color:#0086b3;>... </span><span style=font-weight:bold;color:#a71d5d;>elif </span><span>extensao </span><span style=font-weight:bold;color:#a71d5d;>== </span><span style=color:#183691;>"png"</span><span>:
+</span><span style=color:#0086b3;>...     </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#183691;>"imagem"</span><span>)
+</span><span style=color:#0086b3;>... </span><span style=font-weight:bold;color:#a71d5d;>else</span><span>:
+</span><span style=color:#0086b3;>...     </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#183691;>"Outo formato"</span><span>)
+</span><span style=color:#0086b3;>... 
+</span><span>Digite a extensão com três dígitos (ex: jpg, gif): jpg
+</span><span>imagem
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span></code></pre><ul><li><code>elif</code></ul><pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>extensao </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#62a35c;>input</span><span>(</span><span style=color:#183691;>"Digite a extensão com três dígitos (ex: jpg, gif): "</span><span>)
+</span><span style=color:#0086b3;>... 
+</span><span style=color:#0086b3;>... </span><span style=font-weight:bold;color:#a71d5d;>if </span><span>extensao </span><span style=font-weight:bold;color:#a71d5d;>== </span><span style=color:#183691;>"jpg"</span><span>:
+</span><span style=color:#0086b3;>...     </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#183691;>"imagem"</span><span>)
+</span><span style=color:#0086b3;>... </span><span style=font-weight:bold;color:#a71d5d;>elif </span><span>extensao </span><span style=font-weight:bold;color:#a71d5d;>== </span><span style=color:#183691;>"gif"</span><span>:
+</span><span style=color:#0086b3;>...     </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#183691;>"imagem"</span><span>)
+</span><span style=color:#0086b3;>... </span><span style=font-weight:bold;color:#a71d5d;>elif </span><span>extensao </span><span style=font-weight:bold;color:#a71d5d;>== </span><span style=color:#183691;>"png"</span><span>:
+</span><span style=color:#0086b3;>...     </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#183691;>"imagem"</span><span>)
+</span><span style=color:#0086b3;>... </span><span style=font-weight:bold;color:#a71d5d;>else</span><span>:
+</span><span style=color:#0086b3;>...     </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#183691;>"Outo formato"</span><span>)
+</span><span style=color:#0086b3;>... 
+</span><span>Digite a extensão com três dígitos (ex: jpg, gif): gif
+</span><span>imagem
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span></code></pre><ul><li><code>else</code></ul><pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>extensao </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#62a35c;>input</span><span>(</span><span style=color:#183691;>"Digite a extensão com três dígitos (ex: jpg, gif): "</span><span>)
+</span><span style=color:#0086b3;>... 
+</span><span style=color:#0086b3;>... </span><span style=font-weight:bold;color:#a71d5d;>if </span><span>extensao </span><span style=font-weight:bold;color:#a71d5d;>== </span><span style=color:#183691;>"jpg"</span><span>:
+</span><span style=color:#0086b3;>...     </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#183691;>"imagem"</span><span>)
+</span><span style=color:#0086b3;>... </span><span style=font-weight:bold;color:#a71d5d;>elif </span><span>extensao </span><span style=font-weight:bold;color:#a71d5d;>== </span><span style=color:#183691;>"gif"</span><span>:
+</span><span style=color:#0086b3;>...     </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#183691;>"imagem"</span><span>)
+</span><span style=color:#0086b3;>... </span><span style=font-weight:bold;color:#a71d5d;>elif </span><span>extensao </span><span style=font-weight:bold;color:#a71d5d;>== </span><span style=color:#183691;>"png"</span><span>:
+</span><span style=color:#0086b3;>...     </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#183691;>"imagem"</span><span>)
+</span><span style=color:#0086b3;>... </span><span style=font-weight:bold;color:#a71d5d;>else</span><span>:
+</span><span style=color:#0086b3;>...     </span><span style=color:#62a35c;>print</span><span>(</span><span style=color:#183691;>"Outo formato"</span><span>)
+</span><span style=color:#0086b3;>... 
+</span><span>Digite a extensão com três dígitos (ex: jpg, gif): mp4
+</span><span>Outo formato
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span></code></pre><p>Você pode usar expressões condicionais ao atribuir valores a variáveis:<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>a </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>10
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>b </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>12
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>maior_valor </span><span style=font-weight:bold;color:#a71d5d;>= </span><span>a </span><span style=font-weight:bold;color:#a71d5d;>if </span><span>a </span><span style=font-weight:bold;color:#a71d5d;>> </span><span>b </span><span style=font-weight:bold;color:#a71d5d;>else </span><span>b
+</span><span style=font-weight:bold;color:#a71d5d;>>>> </span><span style=color:#62a35c;>print</span><span>(maior_valor)
+</span><span style=color:#0086b3;>12
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span></code></pre><p>Em Python, atribuições não retornam valor. <strong>Não</strong> é possível fazer algo como:<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>contador </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>0
+</span><span style=font-weight:bold;color:#a71d5d;>>>> while </span><span>(contador = contador </span><span style=font-weight:bold;color:#a71d5d;>+ </span><span style=color:#0086b3;>1</span><span>) </span><span style=font-weight:bold;color:#a71d5d;>< </span><span style=color:#0086b3;>10</span><span>:
+</span><span style=color:#0086b3;>...     </span><span style=color:#62a35c;>print</span><span>(contador)
+</span><span>  Cell In[</span><span style=color:#0086b3;>9</span><span>], line </span><span style=color:#0086b3;>1
+</span><span>    </span><span style=font-weight:bold;color:#a71d5d;>while </span><span>(contador = contador </span><span style=font-weight:bold;color:#a71d5d;>+ </span><span style=color:#0086b3;>1</span><span>) </span><span style=font-weight:bold;color:#a71d5d;>< </span><span style=color:#0086b3;>10</span><span>:
+</span><span>                    </span><span style=font-weight:bold;color:#a71d5d;>^
+</span><span style=color:#0086b3;>SyntaxError</span><span>: invalid syntax
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span></code></pre><p>Para tanto, foi criado o operador <strong>walrus</strong>, que realiza a atribuição e retorna o valor:<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>contador </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>0
+</span><span style=font-weight:bold;color:#a71d5d;>>>> while </span><span>(contador </span><span style=font-weight:bold;color:#a71d5d;>:= </span><span>contador </span><span style=font-weight:bold;color:#a71d5d;>+ </span><span style=color:#0086b3;>1</span><span>) </span><span style=font-weight:bold;color:#a71d5d;>< </span><span style=color:#0086b3;>10</span><span>: </span><span style=font-style:italic;color:#969896;># parêntese sempre necessário!
+</span><span style=color:#0086b3;>...     </span><span style=color:#62a35c;>print</span><span>(contador)
+</span><span style=color:#0086b3;>... 
+</span><span style=color:#0086b3;>1
+</span><span style=color:#0086b3;>2
+</span><span style=color:#0086b3;>3
+</span><span style=color:#0086b3;>4
+</span><span style=color:#0086b3;>5
+</span><span style=color:#0086b3;>6
+</span><span style=color:#0086b3;>7
+</span><span style=color:#0086b3;>8
+</span><span style=color:#0086b3;>9
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span></code></pre><blockquote><p>Obs: O operador <strong>walrus</strong> deve ser usado sempre entre parênteses.</blockquote><p>Em repetições (<strong>loops</strong>) como o <code>while</code>, pode-se pular para a próximo ciclo de execução antecipamente com a declaração <code>continue</code> ou interromper o ciclo com a declaração <code>break</code>:<pre class=language-python data-lang=python style=background-color:#ffffff;color:#323232;><code class=language-python data-lang=python><span style=font-weight:bold;color:#a71d5d;>>>> </span><span>contador </span><span style=font-weight:bold;color:#a71d5d;>= </span><span style=color:#0086b3;>0
+</span><span style=font-weight:bold;color:#a71d5d;>>>> while </span><span>(contador </span><span style=font-weight:bold;color:#a71d5d;>:= </span><span>contador </span><span style=font-weight:bold;color:#a71d5d;>+ </span><span style=color:#0086b3;>1</span><span>) </span><span style=font-weight:bold;color:#a71d5d;>< </span><span style=color:#0086b3;>10</span><span>: </span><span style=font-style:italic;color:#969896;># parêntese sempre necessário!
+</span><span style=color:#0086b3;>...     </span><span style=font-weight:bold;color:#a71d5d;>if </span><span>contador </span><span style=font-weight:bold;color:#a71d5d;>== </span><span style=color:#0086b3;>5</span><span>:
+</span><span style=color:#0086b3;>...         </span><span style=font-weight:bold;color:#a71d5d;>continue </span><span style=font-style:italic;color:#969896;># pula para o próximo ciclo de execução do loop
+</span><span style=color:#0086b3;>...     </span><span style=font-weight:bold;color:#a71d5d;>elif </span><span>contador </span><span style=font-weight:bold;color:#a71d5d;>== </span><span style=color:#0086b3;>7</span><span>:
+</span><span style=color:#0086b3;>...         </span><span style=font-weight:bold;color:#a71d5d;>break </span><span style=font-style:italic;color:#969896;># interrompe o ciclo antecipadamente
+</span><span style=color:#0086b3;>... 
+</span><span style=color:#0086b3;>...     </span><span style=color:#62a35c;>print</span><span>(contador)
+</span><span style=color:#0086b3;>... 
+</span><span style=color:#0086b3;>1
+</span><span style=color:#0086b3;>2
+</span><span style=color:#0086b3;>3
+</span><span style=color:#0086b3;>4
+</span><span style=color:#0086b3;>6
+</span><span style=font-weight:bold;color:#a71d5d;>>>> 
+</span></code></pre><h2 id=strings>Strings</h2></section></article></main></div>
