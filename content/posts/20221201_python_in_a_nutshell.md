@@ -464,7 +464,7 @@ Para tanto, foi criado o operador **walrus**, que realiza a atribuição e retor
 
 > Obs: O operador **walrus** deve ser usado sempre entre parênteses.
 
-Em repetições (**loops**) como o `while`, pode-se pular para a próximo ciclo de execução antecipamente com a declaração `continue` ou interromper o ciclo com a declaração `break`:
+Em repetições (**loops**) como o `while`, pode-se pular para a próximo ciclo de execução antecipadamente com a declaração `continue` ou interromper o ciclo com a declaração `break`:
 
 ```python
 >>> contador = 0
