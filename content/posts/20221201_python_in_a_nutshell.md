@@ -71,7 +71,7 @@ Alguns editores recomendados:
 
 ## Primitivos, variáveis e expressões
 
-Python apresenta uma coleção de tipos primitivos: `bool` (*booleanos*), `int` (*inteiros*), `float` (*ponto flutuante*) e `str` (*string* |fc *texto*).
+Python apresenta uma coleção de tipos primitivos: `bool` (*booleanos*), `int` (*inteiros*), `float` (*ponto flutuante*) e `str` (*string* | *texto*).
 
 ```python
 >>> True # bool
