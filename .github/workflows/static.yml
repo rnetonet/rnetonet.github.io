@@ -4,8 +4,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: GitHub Pages v3
-        uses: peaceiris/actions-github-pages@v3.1.12
-        with:
-          publish_branch: main
-          publish_dir: docs
+      - name: Upload GitHub Pages artifact
+      uses: actions/upload-pages-artifact@v1.0.7
+      with:
+        path: docs
