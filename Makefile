@@ -1,6 +1,5 @@
 build:
 	./zola build
-	cp CNAME docs/
-
+	cp CNAME public/
 serve:
 	./zola serve

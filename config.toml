@@ -4,7 +4,7 @@ build_search_index = true
 generate_feed = true
 compile_sass = true
 minify_html = true
-output_dir = "docs"
+output_dir = "public"
 
 [markdown]
 highlight_code = true
