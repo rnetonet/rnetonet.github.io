@@ -1,5 +1,11 @@
-- name: GitHub Pages v3
-  uses: peaceiris/actions-github-pages@v3.1.12
-  with:
-    publish_branch: main
-    publish_dir: docs
+name: Publish
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: GitHub Pages v3
+        uses: peaceiris/actions-github-pages@v3.1.12
+        with:
+          publish_branch: main
+          publish_dir: docs
