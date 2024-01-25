@@ -30,6 +30,10 @@ html {
   word-wrap: break-word;
 }
 
+main.list ul {
+  padding-inline-start: 0px;
+}
+
 @media all and (min-width:640px) {
   html {
     font-size: var(--font-size);
