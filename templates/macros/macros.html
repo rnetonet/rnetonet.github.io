@@ -84,7 +84,7 @@
         {# Optional table of contents #}
         {% if config.extra.toc | default(value=false) %}
             {% if page.toc %}
-                <h1>Índice</h1>
+                <h1>TOC</h1>
                 <ul>
                 {% for h1 in page.toc %}
                     <li>
