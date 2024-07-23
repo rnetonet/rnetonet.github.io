@@ -11,7 +11,7 @@ highlight_code = true
 highlight_theme = "inspired-github"
 
 [extra]
-toc = true
+toc = false
 use_cdn = false
 #favicon = "/icon/favicon.png"
 #theme = "apollo"

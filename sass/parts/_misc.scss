@@ -11,6 +11,14 @@
   background-color: var(--primary-color);
 }
 
+.toc {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
 ::-moz-selection {
   background: var(--primary-color);
   color: var(--hover-color);

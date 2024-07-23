@@ -52,7 +52,7 @@
 
 {% macro page_header(title) %}
     <div class="page-header">
-        {{ title }}<span class="primary-color" style="font-size: 1.6em">.</span>
+        {{ title }}
     </div>
 {% endmacro content %}
 
@@ -84,33 +84,34 @@
         {# Optional table of contents #}
         {% if config.extra.toc | default(value=false) %}
             {% if page.toc %}
-                <h1>TOC</h1>
-                <ul>
-                {% for h1 in page.toc %}
-                    <li>
-                        <a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
-                        {% if h1.children %}
-                            <ul>
-                                {% for h2 in h1.children %}
-                                    <li>
-                                        <a href="{{ h2.permalink | safe }}">{{ h2.title }}</a>
-                                    </li>
+                <div class="toc">
+                    <ul>
+                    {% for h1 in page.toc %}
+                        <li>
+                            <a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
+                            {% if h1.children %}
+                                <ul>
+                                    {% for h2 in h1.children %}
+                                        <li>
+                                            <a href="{{ h2.permalink | safe }}">{{ h2.title }}</a>
+                                        </li>
 
-                                    {% if h2.children %}
-                                    <ul>
-                                        {% for h3 in h2.children %}
-                                            <li>
-                                                <a href="{{ h3.permalink | safe }}">{{ h3.title }}</a>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                    {% endif %}
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
-                    </li>
-                {% endfor %}
-                </ul>
+                                        {% if h2.children %}
+                                        <ul>
+                                            {% for h3 in h2.children %}
+                                                <li>
+                                                    <a href="{{ h3.permalink | safe }}">{{ h3.title }}</a>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
             {% endif %}
         {% endif %}
 
