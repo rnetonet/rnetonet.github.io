@@ -19,6 +19,10 @@
   padding: 1rem;
 }
 
+.title .page-header {
+  font-weight: 500;
+}
+
 ::-moz-selection {
   background: var(--primary-color);
   color: var(--hover-color);
