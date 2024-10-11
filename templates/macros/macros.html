@@ -6,11 +6,11 @@
         {% endif -%}
 
         <section class="list-item">
-            <h1 class="title">
+            <h1>
                 <a href={{ page.permalink }}>{{page.title}}</a>
             </h1>
 
-            <time>{{ page.date | date(format="%d/%m/%Y") }}</time>
+            <div class="meta">{{ page.date | date(format="%d/%m/%Y") }}</div>
 
             <br />
             <div class="description">
@@ -60,8 +60,7 @@
 <main>
     <article>
         <div class="title">
-            {#<h1 class="title">{{ page.title }}</h1>#}
-            {{ post_macros::page_header(title=page.title) }}
+            <h1>{{ page.title }}</h1>
 
             {% if page.date %}
                 <div class="meta">
