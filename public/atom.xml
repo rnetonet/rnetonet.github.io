@@ -7,25 +7,25 @@
 	<updated>2024-07-22T00:00:00+00:00</updated>
 	<id>https://rneto.net/atom.xml</id>
 	<entry xml:lang="en">
-		<title>Flask-SQLAlchemy, psycopg2 and passwords with special characters</title>
+		<title>Handling Special Characters in Passwords with Flask-SQLAlchemy and psycopg2</title>
 		<published>2024-07-22T00:00:00+00:00</published>
 		<updated>2024-07-22T00:00:00+00:00</updated>
 		<link href="https://rneto.net/posts/20240722-psycopg2-password-encoding/" type="text/html"/>
 		<id>https://rneto.net/posts/20240722-psycopg2-password-encoding/</id>
-		<content type="html">&lt;h1 id=&quot;context&quot;&gt;Context&lt;&#x2F;h1&gt;
+		<content type="html">&lt;h2 id=&quot;context&quot;&gt;Context&lt;&#x2F;h2&gt;
 &lt;p&gt;After spending a lot of time debugging a Flask-SQLAlchemy connection error to a PostgreSQL database, 
-I found out the root cause was special characters in the database password. Specifically, the password contained the &lt;code&gt;@&lt;&#x2F;code&gt; symbol.&lt;&#x2F;p&gt;
-&lt;p&gt;The &lt;strong&gt;psycopg2&lt;&#x2F;strong&gt; error message is not very helpful either, as it displays a generic error like:&lt;&#x2F;p&gt;
+I discovered that the root cause was special characters in the database password. Specifically, the password contained the &lt;code&gt;@&lt;&#x2F;code&gt; symbol.&lt;&#x2F;p&gt;
+&lt;p&gt;The &lt;strong&gt;psycopg2&lt;&#x2F;strong&gt; error message was not very helpful, as it displayed a generic error:&lt;&#x2F;p&gt;
 &lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#ffffff;color:#323232;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span&gt;UnicodeDecodeError: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#183691;&quot;&gt;&amp;#39;utf-8&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt; codec can&lt;&#x2F;span&gt;&lt;span style=&quot;color:#183691;&quot;&gt;&amp;#39;t decode byte 0xd6 in position 61: invalid continuation byte
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;h1 id=&quot;fix&quot;&gt;Fix&lt;&#x2F;h1&gt;
-&lt;p&gt;To fix it, you should escape the password using &lt;strong&gt;urllib.parse&lt;&#x2F;strong&gt;:&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;&#x2F;h2&gt;
+&lt;p&gt;To resolve this issue, you should escape the password using &lt;strong&gt;urllib.parse&lt;&#x2F;strong&gt;:&lt;&#x2F;p&gt;
 &lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#ffffff;color:#323232;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;font-weight:bold;color:#a71d5d;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;urllib &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#a71d5d;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;parse
 &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#a71d5d;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;psycopg2
 &lt;&#x2F;span&gt;&lt;span&gt;
 &lt;&#x2F;span&gt;&lt;span&gt;dsn &lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#a71d5d;&quot;&gt;= fr&lt;&#x2F;span&gt;&lt;span style=&quot;color:#183691;&quot;&gt;&amp;quot;postgresql:&#x2F;&#x2F;souser:&lt;&#x2F;span&gt;&lt;span&gt;{parse.quote(password)}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#183691;&quot;&gt;@localhost&#x2F;test&amp;quot;
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;h1 id=&quot;references&quot;&gt;References&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;references&quot;&gt;References&lt;&#x2F;h2&gt;
 &lt;ul&gt;
 &lt;li&gt;https:&#x2F;&#x2F;stackoverflow.com&#x2F;a&#x2F;77193560&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
